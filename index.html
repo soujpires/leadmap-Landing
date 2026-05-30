@@ -4,210 +4,229 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lead Map — O sistema que consultores de alto nível usam para construir carteira</title>
-<meta name="description" content="Pare de arriscar sua carteira em uma planilha. O Lead Map é o Sit Plan Profissional que organiza seu Mercado X, Y e Z com segurança e inteligência.">
+<meta name="description" content="Pare de arriscar sua carteira em uma planilha. O Lead Map é o Sit Plan Profissional que organiza sua rede de contatos com segurança e inteligência.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0D1B40;
   --navy-mid:#162254;
-  --navy-light:#1e2f6e;
   --gold:#C9A84C;
   --gold-light:#dfc06a;
   --gold-dim:rgba(201,168,76,0.12);
   --gold-border:rgba(201,168,76,0.25);
   --white:#FAFAF7;
   --offwhite:#F0EDE6;
-  --cream:#E8E3D8;
   --text:#141922;
-  --gray:#6B7280;
+  --gray:#4B5563;
   --border:rgba(0,0,0,0.07);
+  /* Mobile-first base font: 18px */
+  font-size:18px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:1rem;line-height:1.6}
 
-/* ─── NOISE ─── */
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:9999}
-
-/* ─── TYPOGRAPHY ─── */
-.display{font-family:'Cormorant Garamond',Georgia,serif;font-weight:800;line-height:1.05;letter-spacing:-0.03em}
-.heading{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;line-height:1.1;letter-spacing:-0.02em}
-
-/* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,27,64,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.1)}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,27,64,0.95);backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.12)}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-name{font-family:'Instrument Sans',sans-serif;font-size:18px;font-weight:600;color:var(--gold);letter-spacing:0.01em}
-.nav-btn{padding:9px 22px;border-radius:8px;background:var(--gold);color:var(--navy);font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;letter-spacing:0.01em}
-.nav-btn:hover{background:var(--gold-light);transform:translateY(-1px)}
+.nav-logo-name{font-family:'Instrument Sans',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold)}
+.nav-btn{padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--navy);font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+.nav-btn:hover{background:var(--gold-light)}
 
-/* ─── HERO ─── */
-.hero{background:var(--navy);min-height:100vh;padding-top:64px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+/* ── HERO ── */
+.hero{background:var(--navy);min-height:100vh;padding-top:60px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+.hero-radial{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:800px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.1) 0%,transparent 65%);pointer-events:none}
 
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-.hero-radial{position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.1) 0%,transparent 65%);pointer-events:none}
-.hero-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent)}
+.hero-inner{max-width:900px;margin:0 auto;padding:72px 24px 80px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
 
-.hero-inner{max-width:1100px;margin:0 auto;padding:100px 40px 120px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;border:0.5px solid var(--gold-border);border-radius:4px;padding:7px 16px;font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:36px;font-family:'Instrument Sans',sans-serif}
+.hero-eyebrow-line{width:18px;height:0.5px;background:var(--gold)}
 
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;border:0.5px solid var(--gold-border);border-radius:4px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:40px;font-family:'Instrument Sans',sans-serif}
-.hero-eyebrow-line{width:20px;height:0.5px;background:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(2.6rem,8vw,5.2rem);color:#fff;line-height:1.04;letter-spacing:-0.01em;margin-bottom:24px;max-width:800px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-title .strike{position:relative;color:rgba(255,255,255,0.22)}
+.hero-title .strike::after{content:'';position:absolute;left:0;right:0;top:52%;height:1.5px;background:rgba(255,255,255,0.3)}
 
-.hero-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(44px,7vw,96px);color:#fff;line-height:1.0;letter-spacing:-0.02em;font-weight:300;margin-bottom:28px;max-width:860px}
-.hero-title .accent{color:var(--gold)}
-.hero-title .strike{position:relative;color:rgba(255,255,255,0.25)}
-.hero-title .strike::after{content:'';position:absolute;left:0;right:0;top:54%;height:2px;background:rgba(255,255,255,0.3)}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,0.75);max-width:580px;line-height:1.7;margin-bottom:48px;font-weight:300}
 
-.hero-sub{font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,0.45);max-width:600px;line-height:1.7;margin-bottom:56px;font-weight:300}
+.hero-price-strip{display:inline-flex;align-items:center;gap:20px;margin-bottom:44px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:12px;padding:18px 28px;flex-wrap:wrap;justify-content:center}
+.hps-value{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:300;color:var(--gold);letter-spacing:-0.02em;line-height:1}
+.hps-divider{width:1px;height:36px;background:rgba(255,255,255,0.1)}
+.hps-label{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.5;font-weight:400}
 
-.hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:16px}
-.btn-hero{display:inline-flex;align-items:center;gap:10px;padding:18px 48px;background:var(--gold);color:var(--navy);border-radius:10px;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:700;text-decoration:none;transition:all 0.25s;cursor:pointer;border:none;position:relative;overflow:hidden;letter-spacing:0.01em}
-.btn-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 50%)}
-.btn-hero:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 20px 60px rgba(201,168,76,0.35)}
-.hero-sub-cta{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.04em}
+.hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:var(--gold);color:var(--navy);border-radius:10px;font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:600;text-decoration:none;transition:all 0.25s;cursor:pointer;border:none;width:100%;max-width:360px;justify-content:center}
+.btn-hero:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,168,76,0.3)}
+.hero-sub-cta{font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;text-align:center}
 
-.hero-price-strip{display:inline-flex;align-items:center;gap:20px;margin-bottom:52px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px 28px}
-.hps-old{font-size:13px;color:rgba(255,255,255,0.2);text-decoration:line-through;font-family:'Cormorant Garamond',Georgia,serif}
-.hps-divider{width:1px;height:28px;background:rgba(255,255,255,0.08)}
-.hps-value{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:800;color:var(--gold);letter-spacing:-0.03em}
-.hps-label{font-size:12px;color:rgba(255,255,255,0.25);line-height:1.4}
+/* ── APP MOCKUP CAROUSEL ── */
+.mockup-section{background:var(--navy);padding:0 0 80px;overflow:hidden}
+.mockup-label{text-align:center;font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.2);letter-spacing:0.12em;text-transform:uppercase;padding-bottom:24px;font-family:'Instrument Sans',sans-serif}
+.mockup-track-wrap{position:relative}
+.mockup-track-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,var(--navy),transparent);z-index:2;pointer-events:none}
+.mockup-track-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(-90deg,var(--navy),transparent);z-index:2;pointer-events:none}
+.mockup-track{display:flex;gap:16px;animation:slideTrack 32s linear infinite;width:max-content}
+.mockup-track:hover{animation-play-state:paused}
+@keyframes slideTrack{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ─── RISK SECTION ─── */
-.risk-section{background:var(--offwhite);padding:100px 40px;position:relative}
+.mock-screen{width:240px;flex-shrink:0;background:#111827;border-radius:16px;overflow:hidden;border:0.5px solid rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.mock-topbar{background:var(--navy);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid rgba(255,255,255,0.06)}
+.mock-title{font-size:11px;font-weight:600;color:var(--gold);font-family:'Instrument Sans',sans-serif}
+.mock-body{padding:10px}
+
+/* Contacts screen */
+.mock-search{background:rgba(255,255,255,0.06);border-radius:6px;padding:7px 10px;font-size:9px;color:rgba(255,255,255,0.3);margin-bottom:8px;font-family:'Instrument Sans',sans-serif}
+.mock-contact{display:flex;align-items:center;gap:8px;padding:8px;background:rgba(255,255,255,0.04);border-radius:8px;margin-bottom:6px;border:0.5px solid rgba(255,255,255,0.05)}
+.mock-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;font-family:'Instrument Sans',sans-serif}
+.av-m{background:#1a2e5e;color:#7898D4}
+.av-f{background:#2e1a3e;color:#A87AD4}
+.mock-cname{font-size:10px;font-weight:500;color:rgba(255,255,255,0.85);font-family:'Instrument Sans',sans-serif}
+.mock-crole{font-size:8px;color:rgba(255,255,255,0.35);margin-top:1px;font-family:'Instrument Sans',sans-serif}
+.mock-badge{margin-left:auto;font-size:7px;padding:2px 6px;border-radius:20px;white-space:nowrap;font-family:'Instrument Sans',sans-serif}
+.badge-lead{background:rgba(55,138,221,0.15);color:#7EB3E8}
+.badge-ativo{background:rgba(29,158,117,0.15);color:#5CC9A7}
+.badge-abordagem{background:rgba(239,159,39,0.15);color:#EFC96F}
+
+/* Kanban screen */
+.mock-col{background:rgba(255,255,255,0.04);border-radius:8px;padding:8px;margin-bottom:6px;border:0.5px solid rgba(255,255,255,0.05)}
+.mock-col-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.mock-col-dot{width:7px;height:7px;border-radius:50%;margin-right:5px;display:inline-block}
+.mock-col-name{font-size:9px;font-weight:600;color:rgba(255,255,255,0.6);font-family:'Instrument Sans',sans-serif}
+.mock-col-count{font-size:8px;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:20px;font-family:'Instrument Sans',sans-serif}
+.mock-card{background:rgba(255,255,255,0.07);border-radius:5px;padding:6px 8px;margin-bottom:4px;border:0.5px solid rgba(255,255,255,0.06)}
+.mock-card-name{font-size:9px;font-weight:500;color:rgba(255,255,255,0.8);font-family:'Instrument Sans',sans-serif}
+.mock-card-val{font-size:8px;color:#5CC9A7;margin-top:3px;font-family:'Instrument Sans',sans-serif}
+
+/* Dashboard screen */
+.mock-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.mock-stat{background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 8px;border:0.5px solid rgba(255,255,255,0.05)}
+.mock-stat-num{font-size:18px;font-weight:600;color:#fff;line-height:1;font-family:'Instrument Sans',sans-serif}
+.mock-stat-lbl{font-size:7px;color:rgba(255,255,255,0.35);margin-top:3px;font-family:'Instrument Sans',sans-serif}
+.mock-stat-num.gold{color:var(--gold)}
+.mock-rec-title{font-size:8px;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;font-family:'Instrument Sans',sans-serif}
+.mock-rec-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.mock-rec-name{font-size:9px;color:rgba(255,255,255,0.7);flex:1;font-family:'Instrument Sans',sans-serif}
+.mock-rec-bar-wrap{width:60px;height:4px;background:rgba(255,255,255,0.06);border-radius:2px}
+.mock-rec-bar{height:4px;border-radius:2px;background:var(--gold)}
+.mock-rec-count{font-size:8px;color:var(--gold);font-family:'Instrument Sans',sans-serif}
+
+/* Agenda screen */
+.mock-agenda-header{display:flex;gap:4px;margin-bottom:8px}
+.mock-day{flex:1;text-align:center;padding:5px 2px;border-radius:5px}
+.mock-day-name{font-size:7px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif}
+.mock-day-num{font-size:11px;font-weight:500;color:rgba(255,255,255,0.6);margin-top:2px;font-family:'Instrument Sans',sans-serif}
+.mock-day.today{background:rgba(201,168,76,0.15)}
+.mock-day.today .mock-day-num{color:var(--gold)}
+.mock-event{border-radius:5px;padding:6px 8px;margin-bottom:5px;border-left:2px solid}
+.ev-blue{background:rgba(55,138,221,0.12);border-color:#378ADD}
+.ev-gold{background:rgba(239,159,39,0.12);border-color:#EF9F27}
+.ev-green{background:rgba(29,158,117,0.12);border-color:#1D9E75}
+.mock-ev-title{font-size:9px;font-weight:500;color:rgba(255,255,255,0.8);font-family:'Instrument Sans',sans-serif}
+.mock-ev-time{font-size:8px;color:rgba(255,255,255,0.35);margin-top:2px;font-family:'Instrument Sans',sans-serif}
+
+/* ── RISK ── */
+.risk-section{background:var(--offwhite);padding:80px 24px;position:relative}
 .risk-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.risk-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.risk-text .eyebrow{font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
-.risk-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--navy);line-height:1.08;letter-spacing:-0.03em;margin-bottom:24px}
-.risk-text p{font-size:16px;color:var(--gray);line-height:1.75}
+.risk-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.eyebrow{font-size:0.72rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:18px;font-family:'Instrument Sans',sans-serif;display:block}
+.risk-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--navy);line-height:1.1;letter-spacing:-0.01em;margin-bottom:20px}
+.risk-text h2 em{font-style:italic;color:var(--gold)}
+.risk-text p{font-size:1rem;color:var(--gray);line-height:1.75}
 .risk-callout{background:var(--navy);border-radius:16px;padding:36px;position:relative;overflow:hidden}
-.risk-callout::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.1),transparent 60%)}
+.risk-callout::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.1),transparent 60%);pointer-events:none}
 .rc-icon{width:48px;height:48px;border-radius:12px;background:rgba(201,168,76,0.1);border:0.5px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .rc-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.rc-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-0.02em}
-.rc-body{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7}
-.rc-stat{margin-top:24px;padding-top:24px;border-top:0.5px solid rgba(255,255,255,0.07);display:flex;align-items:flex-end;gap:8px}
-.rc-stat-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:40px;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-0.04em}
-.rc-stat-label{font-size:13px;color:rgba(255,255,255,0.3);padding-bottom:4px;line-height:1.4}
+.rc-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#fff;margin-bottom:12px;line-height:1.2}
+.rc-body{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75}
+.rc-promise{margin-top:28px;padding-top:24px;border-top:0.5px solid rgba(255,255,255,0.07)}
+.rc-promise-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-style:italic;color:var(--gold);line-height:1.4}
 
-/* ─── EGO SECTION ─── */
-.ego-section{background:var(--navy);padding:100px 40px;position:relative;overflow:hidden}
-.ego-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,76,0.05) 1px,transparent 1px);background-size:24px 24px}
-.ego-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.ego-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(24px,4vw,52px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-0.03em;margin-bottom:32px}
-.ego-quote em{font-style:normal;color:var(--gold)}
-.ego-sub{font-size:18px;color:rgba(255,255,255,0.35);max-width:580px;margin:0 auto 56px;line-height:1.65;font-weight:300}
-.ego-proof{display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
-.ep-item{text-align:center}
-.ep-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:48px;font-weight:800;color:var(--gold);letter-spacing:-0.04em;line-height:1}
-.ep-label{font-size:13px;color:rgba(255,255,255,0.3);margin-top:6px}
+/* ── EGO ── */
+.ego-section{background:var(--navy);padding:96px 24px;position:relative;overflow:hidden}
+.ego-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,76,0.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.ego-inner{max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.ego-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,5vw,3.4rem);font-weight:300;color:#fff;line-height:1.12;letter-spacing:-0.01em;margin-bottom:28px}
+.ego-quote em{font-style:italic;color:var(--gold)}
+.ego-sub{font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,0.65);max-width:580px;margin:0 auto;line-height:1.7;font-weight:300}
 
-/* ─── MERCADOS ─── */
-.mercados-section{background:var(--white);padding:100px 40px}
-.mercados-inner{max-width:1060px;margin:0 auto}
-.mercados-header{margin-bottom:64px}
-.mercados-header .eyebrow{font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
-.mercados-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:800;color:var(--navy);letter-spacing:-0.03em;line-height:1.08;max-width:600px}
-.mercados-track{display:flex;gap:0;border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
-.merc{flex:1;padding:40px 32px;position:relative;transition:background 0.25s}
-.merc:not(:last-child){border-right:0.5px solid var(--border)}
-.merc:hover{background:var(--offwhite)}
-.merc-letter-bg{font-family:'Cormorant Garamond',Georgia,serif;font-size:110px;font-weight:300;color:rgba(13,27,64,0.05);line-height:1;position:absolute;top:16px;right:16px;letter-spacing:-0.06em}
-.merc-tag{display:inline-block;background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
-.merc-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:12px;letter-spacing:-0.02em}
-.merc-text{font-size:14px;color:var(--gray);line-height:1.7}
-.merc-arrow{position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:24px;height:24px;background:var(--white);border:0.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1}
-.merc-arrow svg{width:10px;height:10px;stroke:var(--gold);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-
-/* ─── FEATURES ─── */
-.features-section{background:var(--offwhite);padding:100px 40px}
-.features-inner{max-width:1060px;margin:0 auto}
-.features-header{margin-bottom:64px}
-.features-header .eyebrow{font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
-.features-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:800;color:var(--navy);letter-spacing:-0.03em;line-height:1.08}
-.features-header p{font-size:17px;color:var(--gray);margin-top:16px;max-width:500px;line-height:1.65;font-weight:300}
+/* ── FEATURES ── */
+.features-section{background:var(--white);padding:96px 24px}
+.features-inner{max-width:960px;margin:0 auto}
+.features-header{margin-bottom:56px}
+.features-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--navy);letter-spacing:-0.01em;line-height:1.1;margin-bottom:12px}
+.features-header p{font-size:1.05rem;color:var(--gray);line-height:1.7;max-width:520px}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:16px;overflow:hidden}
-.feat{background:var(--white);padding:32px 28px;transition:background 0.2s}
+.feat{background:var(--white);padding:32px 24px;transition:background 0.2s}
 .feat:hover{background:var(--offwhite)}
-.feat-icon{width:40px;height:40px;border-radius:10px;background:rgba(13,27,64,0.05);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.feat-icon{width:40px;height:40px;border-radius:10px;background:rgba(13,27,64,0.05);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
 .feat-icon svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.feat-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px;letter-spacing:-0.01em}
-.feat-text{font-size:14px;color:var(--gray);line-height:1.65}
+.feat-title{font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:10px}
+.feat-text{font-size:0.9rem;color:var(--gray);line-height:1.7}
 
-/* ─── PRICE ─── */
-.price-section{background:var(--navy);padding:100px 40px;position:relative;overflow:hidden}
-.price-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.08),transparent 60%)}
-.price-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;text-align:center}
-.price-eyebrow{font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px;font-family:'Instrument Sans',sans-serif}
-.price-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:56px;line-height:1.08}
-.price-card{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:48px 40px;position:relative;overflow:hidden}
+/* ── PRICE ── */
+.price-section{background:var(--navy);padding:96px 24px;position:relative;overflow:hidden}
+.price-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.08),transparent 60%);pointer-events:none}
+.price-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.price-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:#fff;letter-spacing:-0.01em;margin-bottom:48px;line-height:1.1}
+.price-title em{font-style:italic;color:var(--gold)}
+.price-card{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:44px 36px;position:relative;overflow:hidden}
 .price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.pc-badge{display:inline-block;background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:4px;padding:5px 14px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px}
-.pc-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:88px;font-weight:300;color:var(--gold);letter-spacing:-0.05em;line-height:1}
-.pc-period{font-size:14px;color:rgba(255,255,255,0.25);margin-top:8px;margin-bottom:36px}
-.pc-divider{height:0.5px;background:rgba(255,255,255,0.07);margin:36px 0}
+.pc-badge{display:inline-block;background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;font-family:'Instrument Sans',sans-serif}
+.pc-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(4rem,12vw,5.5rem);font-weight:300;color:var(--gold);letter-spacing:-0.04em;line-height:1}
+.pc-period{font-size:1rem;color:rgba(255,255,255,0.45);margin-top:8px;margin-bottom:36px;font-weight:400}
+.pc-divider{height:0.5px;background:rgba(255,255,255,0.07);margin:32px 0}
 .pc-features{display:flex;flex-direction:column;gap:14px;text-align:left;margin-bottom:36px}
-.pf{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,0.65)}
-.pf-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.price-btn{width:100%;padding:18px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;font-family:'Instrument Sans',sans-serif;font-size:17px;font-weight:700;cursor:pointer;transition:all 0.25s;letter-spacing:0.01em}
+.pf{display:flex;align-items:center;gap:12px;font-size:0.95rem;color:rgba(255,255,255,0.7)}
+.pf-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.price-btn{width:100%;padding:18px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;font-family:'Instrument Sans',sans-serif;font-size:1.05rem;font-weight:600;cursor:pointer;transition:all 0.25s}
 .price-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,168,76,0.35)}
-.pc-note{font-size:12px;color:rgba(255,255,255,0.2);margin-top:14px}
+.pc-note{font-size:0.8rem;color:rgba(255,255,255,0.25);margin-top:14px}
 
-/* ─── FAQ ─── */
-.faq-section{background:var(--white);padding:100px 40px}
-.faq-inner{max-width:700px;margin:0 auto}
-.faq-header{margin-bottom:48px}
-.faq-header .eyebrow{font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px}
-.faq-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-0.03em}
+/* ── FAQ ── */
+.faq-section{background:var(--white);padding:96px 24px}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-header{margin-bottom:44px}
+.faq-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--navy);letter-spacing:-0.01em}
 .faq-item{border-bottom:0.5px solid var(--border)}
 .faq-item:first-of-type{border-top:0.5px solid var(--border)}
-.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:600;color:var(--navy);background:none;border:none;cursor:pointer;text-align:left;gap:20px;transition:color 0.2s;letter-spacing:-0.01em}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--navy);background:none;border:none;cursor:pointer;text-align:left;gap:20px;transition:color 0.2s}
 .faq-q:hover{color:var(--gold)}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s}
 .faq-icon svg{width:12px;height:12px;stroke:var(--gray);fill:none;stroke-width:2.5;stroke-linecap:round;transition:transform 0.25s}
 .faq-item.open .faq-icon{background:var(--navy);border-color:var(--navy)}
 .faq-item.open .faq-icon svg{stroke:#fff;transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
-.faq-a-inner{padding-bottom:22px;font-size:15px;color:var(--gray);line-height:1.75}
+.faq-a-inner{padding-bottom:22px;font-size:0.95rem;color:var(--gray);line-height:1.75}
 .faq-item.open .faq-a{max-height:300px}
 
-/* ─── FOOTER ─── */
-footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:0.5px solid rgba(201,168,76,0.1)}
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:0.5px solid rgba(201,168,76,0.1)}
 .footer-brand{display:flex;align-items:center;gap:10px}
-.footer-brand-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:700;color:var(--gold)}
-.footer-tagline{font-size:13px;color:rgba(255,255,255,0.2)}
-.footer-copy{font-size:12px;color:rgba(255,255,255,0.15)}
+.footer-brand-name{font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:600;color:var(--gold)}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.25)}
+.footer-copy{font-size:0.8rem;color:rgba(255,255,255,0.15)}
 
-/* ─── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
-/* Cormorant italic accent */
-.hero-title em,.ego-quote em,.risk-text h2 em{font-style:italic;color:var(--gold);font-weight:300}
-.heading em,.display em{font-style:italic;color:var(--gold)}
-/* Cormorant needs slightly more line height at display sizes */
-@media(min-width:900px){
-  .hero-title{font-size:92px;line-height:0.98}
-  .ego-quote{font-size:58px}
-}
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:900px){
-  nav{padding:0 24px}
-  .hero-inner{padding:80px 24px 100px}
-  .risk-inner{grid-template-columns:1fr}
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  :root{font-size:17px}
+  .risk-inner{grid-template-columns:1fr;gap:36px}
   .feat-grid{grid-template-columns:1fr 1fr}
-  .mercados-track{flex-direction:column}
-  .merc:not(:last-child){border-right:none;border-bottom:0.5px solid var(--border)}
-  .merc-arrow{display:none}
-  .risk-section,.ego-section,.mercados-section,.features-section,.price-section,.faq-section{padding:72px 24px}
-  .price-card{padding:36px 28px}
-  .pc-amount{font-size:60px}
+  .price-card{padding:32px 24px}
   footer{flex-direction:column;text-align:center}
+  .hps-divider{display:none}
+  .hero-price-strip{gap:12px;padding:14px 20px}
 }
-@media(max-width:600px){
+@media(max-width:480px){
+  :root{font-size:16px}
   .feat-grid{grid-template-columns:1fr}
-  .ego-proof{gap:40px}
-  .hps-value{font-size:28px}
+  .nav-btn{font-size:0.8rem;padding:9px 16px}
 }
 </style>
 </head>
@@ -216,7 +235,7 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
       <circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/>
       <circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/>
       <circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/>
@@ -233,32 +252,23 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-radial"></div>
-  <div class="hero-line"></div>
-
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
       Sit Plan Profissional
       <div class="hero-eyebrow-line"></div>
     </div>
-
     <h1 class="hero-title">
       Profissionais de alto nível<br>não trabalham com<br><span class="strike">planilha</span>
     </h1>
-
     <p class="hero-sub">
-      Você construiu uma carteira. Desenvolveu relacionamentos. Criou uma rede. Tudo isso dentro de um arquivo Excel que pode sumir com um clique.
+      Você construiu uma carteira. Desenvolveu relacionamentos. Criou uma rede. Tudo isso dentro de um arquivo que pode sumir com um clique.
     </p>
-
     <div class="hero-price-strip">
-      <div>
-        <div class="hps-old">R$ 597 / ano</div>
-      </div>
-      <div class="hps-divider"></div>
       <div class="hps-value">R$ 497</div>
-      <div class="hps-label">pagamento único<br>anual</div>
+      <div class="hps-divider"></div>
+      <div class="hps-label">pagamento único anual</div>
     </div>
-
     <div class="hero-cta-group">
       <a href="#preco" class="btn-hero">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -269,23 +279,148 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
   </div>
 </section>
 
+<!-- APP MOCKUP CAROUSEL -->
+<section class="mockup-section">
+  <div class="mockup-label">Conheça o sistema</div>
+  <div class="mockup-track-wrap">
+    <div class="mockup-track" id="mockup-track">
+
+      <!-- Screen 1: Lead Map -->
+      <div class="mock-screen">
+        <div class="mock-topbar">
+          <span class="mock-title">Lead Map</span>
+          <span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">47 contatos</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-search">Buscar contato...</div>
+          <div class="mock-contact"><div class="mock-av av-m">CM</div><div><div class="mock-cname">Carlos Mendes</div><div class="mock-crole">Médico · Hospital São Lucas</div></div><div class="mock-badge badge-ativo">Cliente ativo</div></div>
+          <div class="mock-contact"><div class="mock-av av-f">AP</div><div><div class="mock-cname">Ana Paula Ramos</div><div class="mock-crole">Advogada · Ramos & Cia</div></div><div class="mock-badge badge-abordagem">Em abordagem</div></div>
+          <div class="mock-contact"><div class="mock-av av-m">RL</div><div><div class="mock-cname">Roberto Lima</div><div class="mock-crole">Empresário · Lima Construtora</div></div><div class="mock-badge badge-lead">Lead</div></div>
+          <div class="mock-contact"><div class="mock-av av-f">FC</div><div><div class="mock-cname">Fernanda Costa</div><div class="mock-crole">Arquiteta · Studio FC</div></div><div class="mock-badge badge-ativo">Cliente ativo</div></div>
+          <div class="mock-contact"><div class="mock-av av-m">MS</div><div><div class="mock-cname">Marcos Souza</div><div class="mock-crole">Engenheiro · Construsouza</div></div><div class="mock-badge badge-lead">Lead</div></div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Pipeline -->
+      <div class="mock-screen">
+        <div class="mock-topbar">
+          <span class="mock-title">Pipeline</span>
+          <span style="font-size:8px;color:var(--gold);font-family:'Instrument Sans',sans-serif">R$ 5.240/mês</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-col">
+            <div class="mock-col-header"><span><div class="mock-col-dot" style="background:#378ADD;display:inline-block"></div><span class="mock-col-name">Estudo</span></span><span class="mock-col-count">3</span></div>
+            <div class="mock-card"><div class="mock-card-name">Roberto Lima</div><div class="mock-card-val">R$ 800/mês · WL50</div></div>
+            <div class="mock-card"><div class="mock-card-name">Fernanda Costa</div><div class="mock-card-val">R$ 640/mês · Prev.</div></div>
+          </div>
+          <div class="mock-col">
+            <div class="mock-col-header"><span><div class="mock-col-dot" style="background:#7F77DD;display:inline-block"></div><span class="mock-col-name">Apresentação</span></span><span class="mock-col-count">2</span></div>
+            <div class="mock-card"><div class="mock-card-name">Bruno Alves</div><div class="mock-card-val">R$ 1.200/mês · WL30</div></div>
+          </div>
+          <div class="mock-col">
+            <div class="mock-col-header"><span><div class="mock-col-dot" style="background:#1D9E75;display:inline-block"></div><span class="mock-col-name">Ganho</span></span><span class="mock-col-count">4</span></div>
+            <div class="mock-card"><div class="mock-card-name">Carlos Mendes</div><div class="mock-card-val">R$ 420/mês · WL30</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Dashboard -->
+      <div class="mock-screen">
+        <div class="mock-topbar">
+          <span class="mock-title">Dashboard</span>
+          <span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">Mai. 2025</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-stat-row">
+            <div class="mock-stat"><div class="mock-stat-num gold">47</div><div class="mock-stat-lbl">Total contatos</div></div>
+            <div class="mock-stat"><div class="mock-stat-num">12</div><div class="mock-stat-lbl">Clientes ativos</div></div>
+            <div class="mock-stat"><div class="mock-stat-num">18</div><div class="mock-stat-lbl">Leads ativos</div></div>
+            <div class="mock-stat"><div class="mock-stat-num gold">8</div><div class="mock-stat-lbl">Recomendantes</div></div>
+          </div>
+          <div class="mock-rec-title">Top recomendantes</div>
+          <div class="mock-rec-row"><span class="mock-rec-name">Carlos Mendes</span><div class="mock-rec-bar-wrap"><div class="mock-rec-bar" style="width:85%"></div></div><span class="mock-rec-count">6</span></div>
+          <div class="mock-rec-row"><span class="mock-rec-name">Ana Ramos</span><div class="mock-rec-bar-wrap"><div class="mock-rec-bar" style="width:60%"></div></div><span class="mock-rec-count">4</span></div>
+          <div class="mock-rec-row"><span class="mock-rec-name">Roberto Lima</span><div class="mock-rec-bar-wrap"><div class="mock-rec-bar" style="width:40%"></div></div><span class="mock-rec-count">3</span></div>
+        </div>
+      </div>
+
+      <!-- Screen 4: Agenda -->
+      <div class="mock-screen">
+        <div class="mock-topbar">
+          <span class="mock-title">Agenda</span>
+          <span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">26 mai – 1 jun</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-agenda-header">
+            <div class="mock-day"><div class="mock-day-name">Seg</div><div class="mock-day-num">26</div></div>
+            <div class="mock-day"><div class="mock-day-name">Ter</div><div class="mock-day-num">27</div></div>
+            <div class="mock-day"><div class="mock-day-name">Qua</div><div class="mock-day-num">28</div></div>
+            <div class="mock-day today"><div class="mock-day-name">Qui</div><div class="mock-day-num">29</div></div>
+            <div class="mock-day"><div class="mock-day-name">Sex</div><div class="mock-day-num">30</div></div>
+          </div>
+          <div class="mock-event ev-blue"><div class="mock-ev-title">Reunião — Carlos Mendes</div><div class="mock-ev-time">09:00 · Apresentação WL30</div></div>
+          <div class="mock-event ev-gold"><div class="mock-ev-title">Follow-up — Ana Ramos</div><div class="mock-ev-time">14:00 · Retorno proposta</div></div>
+          <div class="mock-event ev-green"><div class="mock-ev-title">Fechamento — Bruno Alves</div><div class="mock-ev-time">16:30 · Assinatura contrato</div></div>
+        </div>
+      </div>
+
+      <!-- DUPLICATED for seamless loop -->
+      <div class="mock-screen">
+        <div class="mock-topbar"><span class="mock-title">Lead Map</span><span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">47 contatos</span></div>
+        <div class="mock-body">
+          <div class="mock-search">Buscar contato...</div>
+          <div class="mock-contact"><div class="mock-av av-m">CM</div><div><div class="mock-cname">Carlos Mendes</div><div class="mock-crole">Médico · Hospital São Lucas</div></div><div class="mock-badge badge-ativo">Cliente ativo</div></div>
+          <div class="mock-contact"><div class="mock-av av-f">AP</div><div><div class="mock-cname">Ana Paula Ramos</div><div class="mock-crole">Advogada · Ramos & Cia</div></div><div class="mock-badge badge-abordagem">Em abordagem</div></div>
+          <div class="mock-contact"><div class="mock-av av-m">RL</div><div><div class="mock-cname">Roberto Lima</div><div class="mock-crole">Empresário · Lima Construtora</div></div><div class="mock-badge badge-lead">Lead</div></div>
+          <div class="mock-contact"><div class="mock-av av-f">FC</div><div><div class="mock-cname">Fernanda Costa</div><div class="mock-crole">Arquiteta · Studio FC</div></div><div class="mock-badge badge-ativo">Cliente ativo</div></div>
+        </div>
+      </div>
+      <div class="mock-screen">
+        <div class="mock-topbar"><span class="mock-title">Pipeline</span><span style="font-size:8px;color:var(--gold);font-family:'Instrument Sans',sans-serif">R$ 5.240/mês</span></div>
+        <div class="mock-body">
+          <div class="mock-col"><div class="mock-col-header"><span><div class="mock-col-dot" style="background:#378ADD;display:inline-block"></div><span class="mock-col-name">Estudo</span></span><span class="mock-col-count">3</span></div><div class="mock-card"><div class="mock-card-name">Roberto Lima</div><div class="mock-card-val">R$ 800/mês · WL50</div></div><div class="mock-card"><div class="mock-card-name">Fernanda Costa</div><div class="mock-card-val">R$ 640/mês · Prev.</div></div></div>
+          <div class="mock-col"><div class="mock-col-header"><span><div class="mock-col-dot" style="background:#1D9E75;display:inline-block"></div><span class="mock-col-name">Ganho</span></span><span class="mock-col-count">4</span></div><div class="mock-card"><div class="mock-card-name">Carlos Mendes</div><div class="mock-card-val">R$ 420/mês · WL30</div></div></div>
+        </div>
+      </div>
+      <div class="mock-screen">
+        <div class="mock-topbar"><span class="mock-title">Dashboard</span><span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">Mai. 2025</span></div>
+        <div class="mock-body">
+          <div class="mock-stat-row"><div class="mock-stat"><div class="mock-stat-num gold">47</div><div class="mock-stat-lbl">Total contatos</div></div><div class="mock-stat"><div class="mock-stat-num">12</div><div class="mock-stat-lbl">Clientes ativos</div></div><div class="mock-stat"><div class="mock-stat-num">18</div><div class="mock-stat-lbl">Leads ativos</div></div><div class="mock-stat"><div class="mock-stat-num gold">8</div><div class="mock-stat-lbl">Recomendantes</div></div></div>
+          <div class="mock-rec-title">Top recomendantes</div>
+          <div class="mock-rec-row"><span class="mock-rec-name">Carlos Mendes</span><div class="mock-rec-bar-wrap"><div class="mock-rec-bar" style="width:85%"></div></div><span class="mock-rec-count">6</span></div>
+          <div class="mock-rec-row"><span class="mock-rec-name">Ana Ramos</span><div class="mock-rec-bar-wrap"><div class="mock-rec-bar" style="width:60%"></div></div><span class="mock-rec-count">4</span></div>
+        </div>
+      </div>
+      <div class="mock-screen">
+        <div class="mock-topbar"><span class="mock-title">Agenda</span><span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:'Instrument Sans',sans-serif">26 mai – 1 jun</span></div>
+        <div class="mock-body">
+          <div class="mock-agenda-header"><div class="mock-day"><div class="mock-day-name">Seg</div><div class="mock-day-num">26</div></div><div class="mock-day"><div class="mock-day-name">Ter</div><div class="mock-day-num">27</div></div><div class="mock-day"><div class="mock-day-name">Qua</div><div class="mock-day-num">28</div></div><div class="mock-day today"><div class="mock-day-name">Qui</div><div class="mock-day-num">29</div></div><div class="mock-day"><div class="mock-day-name">Sex</div><div class="mock-day-num">30</div></div></div>
+          <div class="mock-event ev-blue"><div class="mock-ev-title">Reunião — Carlos Mendes</div><div class="mock-ev-time">09:00 · Apresentação WL30</div></div>
+          <div class="mock-event ev-gold"><div class="mock-ev-title">Follow-up — Ana Ramos</div><div class="mock-ev-time">14:00 · Retorno proposta</div></div>
+          <div class="mock-event ev-green"><div class="mock-ev-title">Fechamento — Bruno Alves</div><div class="mock-ev-time">16:30 · Assinatura contrato</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- RISCO -->
 <section class="risk-section">
   <div class="risk-inner reveal">
     <div class="risk-text">
-      <div class="eyebrow">O risco que você não percebe</div>
+      <span class="eyebrow">O risco que você não percebe</span>
       <h2>E se você perder<br><em>a sua planilha?</em></h2>
-      <p>Um arquivo corrompido. Um celular trocado. Um notebook roubado. Um clique errado. Anos de construção de carteira, contatos, histórico de conversas e indicações — apagados. Sem backup, sem recuperação, sem segunda chance.</p>
+      <p>Um arquivo corrompido. Um celular trocado. Um notebook formatado. Anos de construção de carteira, histórico de conversas e trilha de indicações — apagados em segundos. Sem backup. Sem recuperação. Sem segunda chance.</p>
     </div>
     <div class="risk-callout">
       <div class="rc-icon">
         <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       </div>
       <div class="rc-title">Seus contatos não são seus — até estarem protegidos</div>
-      <div class="rc-body">Cada nome na sua lista representa anos de relacionamento, horas de conversa e indicações que chegaram por confiança. Um sistema profissional não é luxo — é responsabilidade com o que você construiu.</div>
-      <div class="rc-stat">
-        <div class="rc-stat-num">200+</div>
-        <div class="rc-stat-label">contatos que um consultor<br>constrói nos primeiros 12 meses</div>
+      <div class="rc-body">Cada nome na sua lista representa anos de relacionamento, horas de conversa, confiança construída indicação a indicação. Um sistema profissional não é um gasto — é responsabilidade com o que você construiu.</div>
+      <div class="rc-promise">
+        <div class="rc-promise-text">"A sua rede de contatos é o ativo mais valioso da sua carreira. Cuide dela como tal."</div>
       </div>
     </div>
   </div>
@@ -296,61 +431,11 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
   <div class="ego-grid-bg"></div>
   <div class="ego-inner reveal">
     <p class="ego-quote">
-      O consultor que fatura seis dígitos<br>não trabalha com <em>improviso.</em>
+      A rede de contatos que você<br>constrói hoje é o alicerce<br>do <em>sucesso de toda a sua carreira.</em>
     </p>
     <p class="ego-sub">
-      Existe uma diferença visível entre quem opera no improviso e quem opera com sistema. Seus clientes percebem isso. Suas indicações percebem isso. O mercado percebe isso.
+      Existe uma diferença visível entre o consultor que opera no improviso e o que opera com sistema. Seus clientes percebem. Suas indicações percebem. O mercado percebe.
     </p>
-    <div class="ego-proof">
-      <div class="ep-item">
-        <div class="ep-num">Mercado X</div>
-        <div class="ep-label">Seus primeiros 200 contatos</div>
-      </div>
-      <div class="ep-item">
-        <div class="ep-num">Mercado Y</div>
-        <div class="ep-label">A indicação dos 200</div>
-      </div>
-      <div class="ep-item">
-        <div class="ep-num">Mercado Z</div>
-        <div class="ep-label">A indicação da indicação</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MERCADOS -->
-<section class="mercados-section">
-  <div class="mercados-inner">
-    <div class="mercados-header reveal">
-      <div class="eyebrow">A metodologia</div>
-      <h2>Do primeiro contato<br>à carteira que se alimenta sozinha</h2>
-    </div>
-    <div class="mercados-track reveal">
-      <div class="merc">
-        <div class="merc-letter-bg">X</div>
-        <div class="merc-tag">Mercado X</div>
-        <div class="merc-title">Seus primeiros 200</div>
-        <div class="merc-text">Amigos, família, colegas. Você aborda, você construiu, você plantou. O Lead Map organiza cada contato com status, follow-up e histórico completo.</div>
-        <div class="merc-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </div>
-      <div class="merc">
-        <div class="merc-letter-bg">Y</div>
-        <div class="merc-tag">Mercado Y</div>
-        <div class="merc-title">A indicação do X</div>
-        <div class="merc-text">Quem foi bem atendido indica. O Lead Map rastreia exatamente quem gerou cada indicação — e quem está produzindo mais para você.</div>
-        <div class="merc-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </div>
-      <div class="merc">
-        <div class="merc-letter-bg">Z</div>
-        <div class="merc-tag">Mercado Z</div>
-        <div class="merc-title">A indicação da indicação</div>
-        <div class="merc-text">O consultor que domina o Z não prospecta — ele é prospectado. A carteira cresce sem esforço adicional. É aqui que está a verdadeira liberdade financeira.</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -358,52 +443,40 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <section class="features-section">
   <div class="features-inner">
     <div class="features-header reveal">
-      <div class="eyebrow">O que está incluído</div>
+      <span class="eyebrow">O que está incluído</span>
       <h2>Dados na palma da mão.<br>De forma profissional.</h2>
-      <p>Tudo que você precisa para operar com nível, do primeiro contato ao fechamento.</p>
+      <p>Tudo que você precisa para construir, organizar e crescer sua rede do primeiro contato ao fechamento.</p>
     </div>
     <div class="feat-grid reveal">
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="feat-title">Lead Map completo</div>
-        <div class="feat-text">200 contatos organizados com status, histórico, recomendante, profissão e anotações. Busca e filtros em tempo real.</div>
+        <div class="feat-text">Sua rede de contatos organizada com status, histórico, recomendante e anotações. Busca e filtros em tempo real, de qualquer dispositivo.</div>
       </div>
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <div class="feat-title">Pipeline Kanban</div>
-        <div class="feat-text">Lead → Estudo → Apresentação → Negociação → Ganho. Visualize onde cada proposta está e quanto está em jogo em cada coluna.</div>
+        <div class="feat-text">Visualize onde cada estudo está — Lead, Apresentação, Negociação, Ganho — e quanto está em jogo em cada etapa.</div>
       </div>
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
         <div class="feat-title">Agenda profissional</div>
-        <div class="feat-text">Grade semanal. Reuniões, follow-ups e apresentações com lembretes. Nunca mais perca um contato por falta de organização.</div>
+        <div class="feat-text">Grade semanal com reuniões, follow-ups e apresentações. Nunca mais perca um contato por falta de organização.</div>
       </div>
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <div class="feat-title">Dashboard e ranking</div>
-        <div class="feat-text">Veja quem mais indica para você, quantos leads estão ativos e qual é a sua taxa de conversão. Gerencie pelo que os dados dizem.</div>
+        <div class="feat-text">Quem mais indica para você, quantos leads ativos e sua taxa de conversão. Gerencie pelo que os dados mostram.</div>
       </div>
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
         <div class="feat-title">Importar planilha</div>
-        <div class="feat-text">Já tem uma planilha? Importe em segundos. O sistema reconhece automaticamente os campos e traz tudo para o Lead Map.</div>
+        <div class="feat-text">Já tem uma planilha montada? Importe em segundos. O sistema reconhece os campos e traz tudo automaticamente.</div>
       </div>
       <div class="feat">
-        <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div class="feat-title">Dados seguros na nuvem</div>
-        <div class="feat-text">Seus contatos protegidos com criptografia profissional. Acesse do celular, do computador ou de qualquer navegador — sempre sincronizado.</div>
+        <div class="feat-text">Sua rede protegida com criptografia profissional. Acesse do celular, computador ou qualquer navegador — sempre sincronizado.</div>
       </div>
     </div>
   </div>
@@ -412,18 +485,16 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <!-- PREÇO -->
 <section class="price-section" id="preco">
   <div class="price-inner">
-    <div class="price-eyebrow reveal">Investimento</div>
-    <h2 class="price-title reveal">Menos de R$ 1,40 por dia<br>para operar no nível que você merece</h2>
-
+    <h2 class="price-title reveal">Menos de <em>R$ 1,40 por dia</em><br>para operar no nível<br>que você merece</h2>
     <div class="price-card reveal">
       <div class="pc-badge">Acesso anual completo</div>
       <div class="pc-amount">R$ 497</div>
-      <div class="pc-period">pagamento único · renovação anual</div>
+      <div class="pc-period">pagamento único anual</div>
       <div class="pc-divider"></div>
       <div class="pc-features">
-        <div class="pf"><div class="pf-dot"></div>Lead Map com busca, filtros e histórico</div>
+        <div class="pf"><div class="pf-dot"></div>Lead Map com busca, filtros e histórico completo</div>
         <div class="pf"><div class="pf-dot"></div>Pipeline Kanban com follow-up e valor por coluna</div>
-        <div class="pf"><div class="pf-dot"></div>Agenda semanal com lembretes</div>
+        <div class="pf"><div class="pf-dot"></div>Agenda semanal profissional</div>
         <div class="pf"><div class="pf-dot"></div>Dashboard, métricas e ranking de recomendantes</div>
         <div class="pf"><div class="pf-dot"></div>Exportação de relatórios XLS e CSV</div>
         <div class="pf"><div class="pf-dot"></div>Importar planilha existente</div>
@@ -440,34 +511,16 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <section class="faq-section">
   <div class="faq-inner">
     <div class="faq-header reveal">
-      <div class="eyebrow">Dúvidas</div>
+      <span class="eyebrow">Dúvidas</span>
       <h2>Perguntas frequentes</h2>
     </div>
     <div class="reveal">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Precisa instalar alguma coisa?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-        <div class="faq-a"><div class="faq-a-inner">Não. O Lead Map roda direto no navegador. No celular, você pode instalar como app pela opção "Adicionar à tela inicial" — aparece com ícone e tela cheia, sem precisar de loja de aplicativos.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Funciona em iPhone?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim, funciona perfeitamente no iPhone. Abra o Safari, acesse o sistema, toque em compartilhar e escolha "Adicionar à tela de início". Fica com ícone e funciona como app nativo.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Posso importar minha planilha atual?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim. O Lead Map aceita XLS e CSV. Clique em "Importar planilha", selecione o arquivo e o sistema reconhece automaticamente as colunas. Seus contatos entram em segundos.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer tipo de consultor?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim. O Lead Map foi pensado para qualquer profissional que constrói carteira por indicação — corretores de seguros, consultores financeiros, planejadores, agentes autônomos. Se você usa o método X, Y, Z, é para você.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">O que acontece depois de 1 ano?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-        <div class="faq-a"><div class="faq-a-inner">Você renova pelo mesmo valor. Se optar por não renovar, seus dados continuam acessíveis por 30 dias para exportação — nada se perde.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Meus dados ficam seguros?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-        <div class="faq-a"><div class="faq-a-inner">Seus dados ficam em banco de dados profissional, protegidos por autenticação e criptografia. Cada consultor acessa apenas os próprios dados. Nenhuma informação é compartilhada.</div></div>
-      </div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Precisa instalar alguma coisa?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Não. O Lead Map roda direto no navegador. No celular, você instala como app pela opção "Adicionar à tela inicial" — aparece com ícone e tela cheia, sem precisar de loja de aplicativos.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Funciona no iPhone?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim, funciona perfeitamente no iPhone. Abra no Safari, acesse o sistema, toque em compartilhar e escolha "Adicionar à tela de início". Fica com ícone e funciona como app nativo.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso importar minha planilha atual?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. O Lead Map aceita XLS e CSV. Clique em "Importar planilha", selecione o arquivo e o sistema reconhece automaticamente as colunas. Seus contatos entram em segundos.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer tipo de consultor?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. O Lead Map foi pensado para qualquer profissional que constrói carteira por indicação — corretores de seguros, consultores financeiros, planejadores, agentes autônomos. Se você usa o método X, Y, Z, é para você.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O que acontece depois de 1 ano?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Você renova pelo mesmo valor. Se optar por não renovar, seus dados ficam acessíveis por 30 dias para exportação — nada se perde.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Meus dados ficam seguros?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Seus dados ficam em banco de dados profissional, protegidos por autenticação e criptografia. Cada consultor acessa apenas os próprios dados. Nenhuma informação é compartilhada.</div></div></div>
     </div>
   </div>
 </section>
@@ -475,13 +528,7 @@ footer{background:var(--navy);padding:48px 40px;display:flex;align-items:center;
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
-    <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
-      <circle cx="9" cy="18" r="5.5" fill="white" opacity="0.9"/>
-      <circle cx="27" cy="8" r="4" fill="white" opacity="0.7"/>
-      <circle cx="27" cy="28" r="4" fill="white" opacity="0.7"/>
-      <line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="1.5" opacity="0.4"/>
-      <line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="1.5" opacity="0.4"/>
-    </svg>
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.9"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.7"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.7"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="1.5" opacity="0.4"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="1.5" opacity="0.4"/></svg>
     <span class="footer-brand-name">Lead Map</span>
   </div>
   <div class="footer-tagline">Sit Plan Profissional · Conexões que geram negócios</div>
@@ -496,15 +543,17 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
+// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.08 });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Pause carousel on hover (already done via CSS), touch support
+const track = document.getElementById('mockup-track');
+let isDragging = false, startX, scrollLeft;
+track.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].pageX; });
+track.addEventListener('touchend', () => { isDragging = false; });
 </script>
 </body>
 </html>
