@@ -28,10 +28,16 @@
 html{scroll-behavior:smooth}
 body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:1rem;line-height:1.6}
 
+
+/* ── PILL BADGES ── */
+.pill-badge{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:7px 16px;font-size:0.7rem;font-weight:700;color:var(--navy);letter-spacing:0.1em;text-transform:uppercase;background:var(--gold);font-family:'Instrument Sans',sans-serif;box-shadow:0 2px 12px rgba(201,168,76,0.3)}
+.pill-badge-dark{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:7px 16px;font-size:0.7rem;font-weight:700;color:var(--navy);letter-spacing:0.1em;text-transform:uppercase;background:var(--gold);font-family:'Instrument Sans',sans-serif;box-shadow:0 2px 12px rgba(201,168,76,0.25)}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:var(--navy)}
+
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,27,64,0.95);backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.12)}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-name{font-family:'Instrument Sans',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold)}
+.nav-logo-name{font-family:'Instrument Sans',sans-serif;font-size:0.78rem;font-weight:600;color:var(--gold);letter-spacing:0.04em}
 .nav-btn{padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--navy);font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
 .nav-btn:hover{background:var(--gold-light)}
 
@@ -47,8 +53,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;d
 
 .hero-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(2.6rem,8vw,5.2rem);color:#fff;line-height:1.04;letter-spacing:-0.01em;margin-bottom:24px;max-width:800px}
 .hero-title em{font-style:italic;color:var(--gold)}
-.hero-title .strike{position:relative;color:rgba(255,255,255,0.22)}
-.hero-title .strike::after{content:'';position:absolute;left:0;right:0;top:52%;height:1.5px;background:rgba(255,255,255,0.3)}
+.hero-title .strike{position:relative;color:rgba(255,255,255,0.55)}
+.hero-title .strike::after{content:'';position:absolute;left:0;right:0;top:52%;height:2px;background:rgba(255,255,255,0.6)}
 
 .hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,0.75);max-width:580px;line-height:1.7;margin-bottom:48px;font-weight:300}
 
@@ -92,7 +98,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;d
 /* HERO SECTION (navy) */
 .mock-hero{background:#0D1B40;padding:6px 10px 10px}
 .mock-welcome{font-size:6.5px;font-weight:600;color:#C9A84C;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;font-family:'Instrument Sans',sans-serif}
-.mock-username{font-size:14px;font-weight:300;color:#fff;font-family:'Cormorant Garamond',Georgia,serif;line-height:1.1}
+.mock-username{font-size:14px;font-weight:400;color:#fff;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:0.01em;line-height:1.1}
 .mock-role{font-size:7px;color:rgba(255,255,255,0.45);margin-bottom:7px;font-family:'Instrument Sans',sans-serif}
 .mock-stats-row{display:flex;gap:5px}
 .mock-stat-box{flex:1;background:rgba(255,255,255,0.07);border-radius:7px;padding:6px 5px;text-align:center;border:0.5px solid rgba(255,255,255,0.06)}
@@ -159,7 +165,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;d
 
 /* PIPELINE (light) */
 .mock-pipe-body{background:#F4F5F9;padding:8px}
-.mock-pipe-title{font-size:12px;font-weight:400;color:#1a1f36;margin-bottom:10px;font-family:'Cormorant Garamond',Georgia,serif}
+.mock-pipe-title{font-size:13px;font-weight:400;color:#1a1f36;margin-bottom:8px;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:0.01em}
 .mock-kcol{background:#fff;border-radius:12px;margin-bottom:7px;border:0.5px solid #E2E6F0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .mock-kcol-bar{height:2.5px}
 .mock-kcol-hd{padding:4px 7px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid #F4F5F9}
@@ -174,7 +180,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;d
 
 /* AGENDA (light) */
 .mock-ag-body{background:#F4F5F9;padding:8px}
-.mock-ag-title{font-size:12px;font-weight:400;color:#1a1f36;margin-bottom:10px;font-family:'Cormorant Garamond',Georgia,serif}
+.mock-ag-title{font-size:13px;font-weight:400;color:#1a1f36;margin-bottom:8px;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:0.01em}
 .mock-ag-week{display:flex;gap:4px;margin-bottom:10px}
 .mock-ag-day{flex:1;text-align:center;padding:3px 1px;border-radius:8px}
 .mock-ag-day.today{background:#0D1B40}
@@ -197,7 +203,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:60px;d
 .risk-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .eyebrow{font-size:0.72rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:18px;font-family:'Instrument Sans',sans-serif;display:block}
 .risk-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--navy);line-height:1.1;letter-spacing:-0.01em;margin-bottom:20px}
-.risk-text h2 em{font-style:italic;color:var(--gold)}
+.risk-text h2 em{font-style:italic;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,0.3)}
 .risk-text p{font-size:1rem;color:var(--gray);line-height:1.75}
 .risk-callout{background:var(--navy);border-radius:16px;padding:36px;position:relative;overflow:hidden}
 .risk-callout::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.1),transparent 60%);pointer-events:none}
@@ -299,7 +305,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
+    <svg width="18" height="18" viewBox="0 0 36 36" fill="none">
       <circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/>
       <circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/>
       <circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/>
@@ -317,11 +323,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
   <div class="hero-grid"></div>
   <div class="hero-radial"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      Sit Plan Profissional
-      <div class="hero-eyebrow-line"></div>
-    </div>
+    <div class="pill-badge-dark"><div class="pill-dot"></div>Sit Plan Profissional<div class="pill-dot"></div></div>
     <h1 class="hero-title">
       Profissionais de alto nível<br>não trabalham com<br><span class="strike">planilha</span>
     </h1>
@@ -420,7 +422,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
       <div class="mock-phone">
         <div class="mock-status"><span class="mock-status-time">22:47</span><div class="mock-status-icons"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="4" height="12" rx="1"/><rect x="9" y="5" width="4" height="15" rx="1"/><rect x="16" y="2" width="4" height="18" rx="1"/></svg></div></div>
         <div class="mock-topbar">
-          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><span class="mock-app-name">Lead Map</span></div>
+          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="2" opacity="0.6"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="2" opacity="0.6"/></svg><span class="mock-app-name">Lead Map</span></div></div>
           <div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         </div>
         <div class="mock-dash-body">
@@ -450,7 +452,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
       <div class="mock-phone">
         <div class="mock-status"><span class="mock-status-time">22:49</span><div class="mock-status-icons"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="4" height="12" rx="1"/><rect x="9" y="5" width="4" height="15" rx="1"/><rect x="16" y="2" width="4" height="18" rx="1"/></svg></div></div>
         <div class="mock-topbar">
-          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><span class="mock-app-name">Lead Map</span></div>
+          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="2" opacity="0.6"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="2" opacity="0.6"/></svg><span class="mock-app-name">Lead Map</span></div></div>
           <div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         </div>
         <div class="mock-pipe-body">
@@ -484,7 +486,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
       <div class="mock-phone">
         <div class="mock-status"><span class="mock-status-time">22:50</span><div class="mock-status-icons"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="4" height="12" rx="1"/><rect x="9" y="5" width="4" height="15" rx="1"/><rect x="16" y="2" width="4" height="18" rx="1"/></svg></div></div>
         <div class="mock-topbar">
-          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><span class="mock-app-name">Lead Map</span></div>
+          <div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="2" opacity="0.6"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="2" opacity="0.6"/></svg><span class="mock-app-name">Lead Map</span></div></div>
           <div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         </div>
         <div class="mock-ag-body">
@@ -508,7 +510,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
       <!-- DUPLICATAS para loop contínuo -->
       <div class="mock-phone">
         <div class="mock-status"><span class="mock-status-time">22:48</span><div class="mock-status-icons"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="4" height="12" rx="1"/><rect x="9" y="5" width="4" height="15" rx="1"/><rect x="16" y="2" width="4" height="18" rx="1"/></svg></div></div>
-        <div class="mock-topbar"><div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><span class="mock-app-name">Lead Map</span></div><div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+        <div class="mock-topbar"><div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="2" opacity="0.6"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="2" opacity="0.6"/></svg><span class="mock-app-name">Lead Map</span></div></div><div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
         <div class="mock-hero"><div class="mock-welcome">Bem-vindo de volta</div><div class="mock-username">João Silva</div><div class="mock-role">Consultor de Seguros</div><div class="mock-stats-row"><div class="mock-stat-box"><div class="mock-stat-n">483</div><div class="mock-stat-l">Contatos</div></div><div class="mock-stat-box"><div class="mock-stat-n">147</div><div class="mock-stat-l">Ativos</div></div><div class="mock-stat-box"><div class="mock-stat-n">89</div><div class="mock-stat-l">Leads</div></div></div></div>
         <div class="mock-search-wrap"><div class="mock-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="mock-search-text">Buscar por nome, profissão, cidade...</span></div></div>
         <div class="mock-list-body"><div class="mock-list-header"><span class="mock-list-title">Seus contatos</span><span class="mock-list-count">483 contatos</span></div>
@@ -519,7 +521,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
       </div>
       <div class="mock-phone">
         <div class="mock-status"><span class="mock-status-time">22:47</span><div class="mock-status-icons"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="4" height="12" rx="1"/><rect x="9" y="5" width="4" height="15" rx="1"/><rect x="16" y="2" width="4" height="18" rx="1"/></svg></div></div>
-        <div class="mock-topbar"><div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><span class="mock-app-name">Lead Map</span></div><div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+        <div class="mock-topbar"><div class="mock-topbar-left"><div class="mock-hamburger"><span></span><span></span><span></span></div><div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 36 36" fill="none"><circle cx="9" cy="18" r="5.5" fill="white" opacity="0.95"/><circle cx="27" cy="8" r="4" fill="white" opacity="0.8"/><circle cx="27" cy="28" r="4" fill="white" opacity="0.8"/><line x1="14.5" y1="15" x2="23.2" y2="10.5" stroke="white" stroke-width="2" opacity="0.6"/><line x1="14.5" y1="21" x2="23.2" y2="25.5" stroke="white" stroke-width="2" opacity="0.6"/></svg><span class="mock-app-name">Lead Map</span></div></div><div class="mock-avatar-btn"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
         <div class="mock-dash-body"><div class="mock-dash-title">Dashboard</div>
           <div class="mock-dash-grid"><div class="mock-dash-card"><div class="mock-dash-icon di-blue"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="mock-dash-num">483</div><div class="mock-dash-lbl">Total de contatos</div></div><div class="mock-dash-card"><div class="mock-dash-icon di-green"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></div><div class="mock-dash-num">147</div><div class="mock-dash-lbl">Clientes ativos</div></div><div class="mock-dash-card"><div class="mock-dash-icon di-orange"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="mock-dash-num">89</div><div class="mock-dash-lbl">Leads ativos</div></div><div class="mock-dash-card"><div class="mock-dash-icon di-purple"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="mock-dash-num">64</div><div class="mock-dash-lbl">Recomendantes</div></div></div>
           <div class="mock-top-card"><div class="mock-top-hd"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg><span class="mock-top-hd-text">Top recomendantes</span></div>
@@ -538,7 +540,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
 <section class="risk-section">
   <div class="risk-inner reveal">
     <div class="risk-text">
-      <span class="eyebrow">O risco que você não percebe</span>
+      <span class="pill-badge" style="margin-bottom:20px">O risco que você não percebe</span>
       <h2>E se você perder<br><em>a sua planilha?</em></h2>
       <p>Um arquivo corrompido. Um celular trocado. Um notebook formatado. Anos de construção de carteira, histórico de conversas e trilha de indicações — apagados em segundos. Sem backup. Sem recuperação. Sem segunda chance.</p>
     </div>
@@ -572,7 +574,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
 <section class="features-section">
   <div class="features-inner">
     <div class="features-header reveal">
-      <span class="eyebrow">O que está incluído</span>
+      <span class="pill-badge" style="margin-bottom:20px">O que está incluído</span>
       <h2>Dados na palma da mão.<br>De forma profissional.</h2>
       <p>Tudo que você precisa para construir, organizar e crescer sua rede do primeiro contato ao fechamento.</p>
     </div>
@@ -616,7 +618,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
   <div class="price-inner">
     <h2 class="price-title reveal">Menos de <em>R$ 1,40 por dia</em><br>para operar no nível<br>que você merece</h2>
     <div class="price-card reveal">
-      <div class="pc-badge">Acesso anual completo</div>
+      <div class="pill-badge-dark" style="margin-bottom:24px">Acesso anual completo</div>
       <div class="pc-amount">R$ 497</div>
       <div class="pc-period">pagamento único anual</div>
       <div class="pc-divider"></div>
@@ -640,7 +642,7 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
 <section class="faq-section">
   <div class="faq-inner">
     <div class="faq-header reveal">
-      <span class="eyebrow">Dúvidas</span>
+      <span class="pill-badge" style="margin-bottom:16px">Dúvidas</span>
       <h2>Perguntas frequentes</h2>
     </div>
     <div class="reveal">
@@ -665,6 +667,49 @@ footer{background:var(--navy);padding:44px 24px;display:flex;align-items:center;
 </footer>
 
 <script>
+// Carousel drag to scroll
+(function(){
+  const track = document.getElementById('mockup-track');
+  if (!track) return;
+  let isDown = false, startX, scrollLeft, animPaused = false;
+  const wrap = track.parentElement;
+
+  function pauseAnim(){ track.style.animationPlayState='paused'; }
+  function resumeAnim(){ if(!isDown) track.style.animationPlayState='running'; }
+
+  // Mouse
+  track.addEventListener('mousedown', e => {
+    isDown = true; startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft; pauseAnim();
+  });
+  window.addEventListener('mouseup', () => { isDown = false; resumeAnim(); });
+  track.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX);
+  });
+
+  // Touch
+  let touchStartX = 0, touchScrollLeft = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = track.scrollLeft;
+    pauseAnim();
+  }, {passive:true});
+  track.addEventListener('touchmove', e => {
+    const dx = touchStartX - e.touches[0].pageX;
+    track.scrollLeft = touchScrollLeft + dx;
+  }, {passive:true});
+  track.addEventListener('touchend', resumeAnim);
+
+  // Make track scrollable
+  track.style.overflowX = 'auto';
+  track.style.scrollbarWidth = 'none';
+  track.style.cursor = 'grab';
+  track.style.userSelect = 'none';
+})();
+
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
